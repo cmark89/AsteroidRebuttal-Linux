@@ -66,9 +66,9 @@ namespace AsteroidRebuttal.Core
 			return (currentState.Buttons.LeftShoulder == ButtonState.Pressed || currentState.Buttons.RightShoulder == ButtonState.Pressed);
 		}
 
-		public static bool ProceedButtonDown()
+		public static bool ProceedButtonPressedUp()
 		{
-			return (XButtonDown() || YButtonDown() || AButtonDown() || BButtonDown() || StartButtonDown());
+			return (XButtonPressedUp || YButtonPressedUp || AButtonPressedUp || BButtonPressedUp || StartButtonPressedUp);
 		}
 
 		public static bool LeftButtonPressedUp()
@@ -86,6 +86,27 @@ namespace AsteroidRebuttal.Core
 		public static bool DownButtonPressedUp()
 		{
 			return (currentState.DPad.Down == ButtonState.Released && lastState.DPad.Down == ButtonState.Pressed);
+		}
+
+		public static bool XButtonPressedUp
+		{
+			get { return (lastState.Buttons.X == ButtonState.Pressed && currentState.Buttons.X == ButtonState.Released); }
+		}
+		public static bool YButtonPressedUp
+		{
+			get { return (lastState.Buttons.Y == ButtonState.Pressed && currentState.Buttons.Y == ButtonState.Released); }
+		}
+		public static bool AButtonPressedUp
+		{
+			get { return (lastState.Buttons.A == ButtonState.Pressed && currentState.Buttons.A == ButtonState.Released); }
+		}
+		public static bool BButtonPressedUp
+		{
+			get { return (lastState.Buttons.B == ButtonState.Pressed && currentState.Buttons.B == ButtonState.Released); }
+		}
+		public static bool StartButtonPressedUp
+		{
+			get { return (lastState.Buttons.Start == ButtonState.Pressed && currentState.Buttons.Start == ButtonState.Released); }
 		}
 
 

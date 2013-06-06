@@ -40,7 +40,7 @@ namespace AsteroidRebuttal.Scenes
         public override void Update(GameTime gameTime)
         {
             time += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (KeyboardManager.KeyPressedUp(Keys.Space) || GamepadManager.ProceedButtonDown())
+            if (KeyboardManager.KeyPressedUp(Keys.Space) || GamepadManager.ProceedButtonPressedUp())
             {
                 if(fadephase < 2)
                     time = 8f;

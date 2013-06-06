@@ -77,7 +77,7 @@ namespace AsteroidRebuttal.Scenes
                 cheatTextCurrentColor = Color.Lerp(Color.Gold, Color.Transparent, ((float)gameTime.TotalGameTime.TotalSeconds - cheatInputTime) / 4f);
             }
 
-            if (fadephase < 2 && (KeyboardManager.KeyPressedUp(Keys.Space) || KeyboardManager.KeyPressedUp(Keys.Enter) || KeyboardManager.KeyPressedUp(Keys.Escape) || GamepadManager.ProceedButtonDown()))
+            if (fadephase < 2 && (KeyboardManager.KeyPressedUp(Keys.Space) || KeyboardManager.KeyPressedUp(Keys.Enter) || KeyboardManager.KeyPressedUp(Keys.Escape) || GamepadManager.ProceedButtonPressedUp()))
             {
                 backgroundCurrentColor = Color.White;
                 text1CurrentColor = Color.White;
@@ -106,7 +106,7 @@ namespace AsteroidRebuttal.Scenes
                 }
 
 
-                if ((KeyboardManager.KeyPressedDown(Keys.Enter) || GamepadManager.ProceedButtonDown()) && !HelpShown && !CreditsShown)
+                if ((KeyboardManager.KeyPressedDown(Keys.Enter) || GamepadManager.ProceedButtonPressedUp()) && !HelpShown && !CreditsShown)
                 {
                     // Begin the game...
                     fadephase = 3;

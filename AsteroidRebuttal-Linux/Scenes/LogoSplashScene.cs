@@ -57,7 +57,7 @@ namespace AsteroidRebuttal.Scenes
             scriptManager.Update(gameTime);
 
             // Check for input to skip the screen
-            if (KeyboardManager.KeyPressedUp(Keys.Space) || KeyboardManager.KeyPressedUp(Keys.Enter) || GamepadManager.ProceedButtonDown())
+            if (KeyboardManager.KeyPressedUp(Keys.Space) || KeyboardManager.KeyPressedUp(Keys.Enter) || GamepadManager.ProceedButtonPressedUp())
             {
                 Game.ChangeScene(new TitleScene(Game));
             }
