@@ -18,7 +18,8 @@ namespace AsteroidRebuttal.Levels
 
         public int LayerID { get; set; }
 
-        ScrollingBackground[] scrollingBackgroundImages;
+		// This now uses a Vector2 because there's no reason to store the textures in a second location
+        Vector2[] scrollingBackgroundImages;
         public float DrawLayer;
 
         #region Lerping Properties
@@ -49,30 +50,28 @@ namespace AsteroidRebuttal.Levels
 
         public void Initialize()
         {
-            scrollingBackgroundImages = new ScrollingBackground[2];
+            scrollingBackgroundImages = new Vector2[2];
 
             for (int i = 0; i < 2; i++)
             {
-                scrollingBackgroundImages[i] = new ScrollingBackground(layerTexture);
-
-                scrollingBackgroundImages[i].position = new Vector2(0, thisScene.ScreenArea.Height - (scrollingBackgroundImages[i].texture.Height * i));
+                scrollingBackgroundImages[i] = new Vector2(0, thisScene.ScreenArea.Height - (layerTexture.Height * i));
             }
         }
 
 
         public void Update(GameTime gameTime)
         {
-            foreach (ScrollingBackground sb in scrollingBackgroundImages)
+            foreach (Vector2 sb in scrollingBackgroundImages)
             {
-                sb.position.Y += (float)gameTime.ElapsedGameTime.TotalSeconds * layerSpeed;
+                sb.Y += (float)gameTime.ElapsedGameTime.TotalSeconds * layerSpeed;
 
-                if (layerSpeed > 0 && sb.position.Y >= thisScene.ScreenArea.Height)
+                if (layerSpeed > 0 && sb.Y >= thisScene.ScreenArea.Height)
                 {
-                    sb.position = new Vector2(sb.position.X, (sb.position.Y - sb.texture.Height * 2));
+                    sb = new Vector2(sb.X, (sb.Y - layerTexture.Height * 2));
                 }
-                else if (layerSpeed < 0 && sb.position.Y + sb.texture.Height <= 0)
+                else if (layerSpeed < 0 && sb.Y + layerTexture.Height <= 0)
                 {
-                    sb.position = new Vector2(sb.position.X, (sb.position.Y + sb.texture.Height * 2));
+                    sb = new Vector2(sb.X, (sb.Y + layerTexture.Height * 2));
                 }
             }
 
@@ -122,9 +121,9 @@ namespace AsteroidRebuttal.Levels
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (ScrollingBackground sb in scrollingBackgroundImages)
+            foreach (Vector2 sb in scrollingBackgroundImages)
             {
-                spriteBatch.Draw(sb.texture, new Vector2(sb.position.X, sb.position.Y), null, layerColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, DrawLayer);
+                spriteBatch.Draw(layerTexture, sb, null, layerColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, DrawLayer);
             }
         }
     }

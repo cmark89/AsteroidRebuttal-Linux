@@ -27,9 +27,12 @@ namespace AsteroidRebuttal.Core
 
         public static SoundEffectInstance PlaySong(SoundEffect thisSong, bool looping = true, float volumeMod = 1f)
         {
-            SoundEffectInstance instance = thisSong.CreateInstance();
+			SoundEffectInstance instance = thisSong.CreateInstance();
             instance.IsLooped = looping;
             instance.Volume = masterVolume * musicVolume * volumeMod;
+			SoundEffectInstanceWrapper song = new SoundEffectInstanceWrapper(instance, false, true);
+
+			currentSfx.Add(song);
             instance.Play();
 
             return instance;
@@ -91,6 +94,12 @@ namespace AsteroidRebuttal.Core
             sfxQueue.Clear();
         }
 
+		public static void StopBGM()
+		{
+			foreach(SoundEffectInstanceWrapper se in currentSfx.FindAll(x => x.IsBackgroundMusic))
+				se.Instance.Stop();
+		}
+
         public struct SoundEffectQueueItem
         {
             public SoundEffect soundEffect;
@@ -116,11 +125,13 @@ namespace AsteroidRebuttal.Core
 		{
 			public SoundEffectInstance Instance;
 			public bool Cancellable = true;
+			public bool IsBackgroundMusic = false;
 
-			public SoundEffectInstanceWrapper(SoundEffectInstance sfx, bool canCancel)
+			public SoundEffectInstanceWrapper(SoundEffectInstance sfx, bool canCancel, bool bgm = false)
 			{
 				Instance = sfx;
 				Cancellable = canCancel;
+				IsBackgroundMusic = bgm;
 			}
 
 			public void Play ()

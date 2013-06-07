@@ -66,11 +66,6 @@ namespace AsteroidRebuttal.Core
 			return (currentState.Buttons.LeftShoulder == ButtonState.Pressed || currentState.Buttons.RightShoulder == ButtonState.Pressed);
 		}
 
-		public static bool ProceedButtonPressedUp()
-		{
-			return (XButtonPressedUp || YButtonPressedUp || AButtonPressedUp || BButtonPressedUp || StartButtonPressedUp);
-		}
-
 		public static bool LeftButtonPressedUp()
 		{
 			return (currentState.DPad.Left == ButtonState.Released && lastState.DPad.Left == ButtonState.Pressed);
@@ -86,6 +81,11 @@ namespace AsteroidRebuttal.Core
 		public static bool DownButtonPressedUp()
 		{
 			return (currentState.DPad.Down == ButtonState.Released && lastState.DPad.Down == ButtonState.Pressed);
+		}
+
+		public static bool ProceedButtonPressedUp()
+		{
+			return (XButtonPressedUp || YButtonPressedUp || AButtonPressedUp || BButtonPressedUp || StartButtonPressedUp);
 		}
 
 		public static bool XButtonPressedUp

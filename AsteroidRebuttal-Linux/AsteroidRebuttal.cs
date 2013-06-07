@@ -23,6 +23,8 @@ namespace AsteroidRebuttal
 {
     public class AsteroidRebuttal : Microsoft.Xna.Framework.Game
     {
+		int fps = 0;
+
         public static GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 

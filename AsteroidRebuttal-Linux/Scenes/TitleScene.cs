@@ -85,10 +85,8 @@ namespace AsteroidRebuttal.Scenes
                 startTextColor = Color.White;
                 startTextNextChange = time + .8f;
                 fadephase = 2;
-            }
-
-            // Process input on the main screen...
-            if (fadephase == 2)
+            }else if(fadephase == 2)
+			// Process input on the main screen...
             {
                 if (KeyboardManager.KeyDown(Keys.LeftShift) || GamepadManager.AnyShoulderButtonDown())
                 {

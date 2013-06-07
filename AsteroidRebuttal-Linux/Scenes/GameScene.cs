@@ -183,7 +183,7 @@ namespace AsteroidRebuttal.Scenes
             levelManager = new LevelManager(this);
 
             // Test
-            levelManager.SetLevel(1);
+            levelManager.SetLevel(4);
 
             //new FinalBoss(this, new Vector2(350, -300));
             player = new PlayerShip(this, new Vector2(350, 550));
@@ -688,6 +688,7 @@ namespace AsteroidRebuttal.Scenes
             else
             {
                 MediaPlayer.Stop();
+				AudioManager.StopBGM();
                 levelManager.HaltAudio();
                 yield return 2f;
                 fader.LerpColor(Color.Black, 2.5f);

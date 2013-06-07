@@ -81,7 +81,6 @@
     <Compile Include="Levels\Level4.cs" />
     <Compile Include="Levels\Level5.cs" />
     <Compile Include="Levels\LevelManager.cs" />
-    <Compile Include="Levels\ScrollingBackground.cs" />
     <Compile Include="Levels\ScrollingBackgroundLayer.cs" />
     <Compile Include="Scenes\GameOverScene.cs" />
     <Compile Include="Scenes\GameScene.cs" />
