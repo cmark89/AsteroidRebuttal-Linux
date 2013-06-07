@@ -47,19 +47,19 @@ namespace AsteroidRebuttal.Levels
             scrollingBackground = new List<ScrollingBackgroundLayer>();
             
             // Individually add each layer to the scrolling background...
-            scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level5SpaceTexture, 10f, Color.White));
+            //scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level5SpaceTexture, 10f, Color.White));
             scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level5NebulaTexture, 20f, Color.White));
             scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level5Stars1Texture, 30f, Color.White));
             scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level5Stars2Texture, 36f, Color.White));
-            scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level5Stars3Texture, 42f, Color.White));
-            scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level5DebrisTexture, 80f, Color.White));
+            //scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level5Stars3Texture, 42f, Color.White));
+            //scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level5DebrisTexture, 80f, Color.White));
 
             scrollingBackground[0].DrawLayer = .99f;
             scrollingBackground[1].DrawLayer = .98f;
             scrollingBackground[2].DrawLayer = .97f;
-            scrollingBackground[3].DrawLayer = .96f;
-            scrollingBackground[4].DrawLayer = .95f;
-            scrollingBackground[5].DrawLayer = .94f;
+            //scrollingBackground[3].DrawLayer = .96f;
+            //scrollingBackground[4].DrawLayer = .95f;
+            //scrollingBackground[5].DrawLayer = .94f;
         }
 
         public override void OnUpdate(GameTime gameTime)
@@ -256,11 +256,11 @@ namespace AsteroidRebuttal.Levels
             scrollingBackground[0].LerpSpeed(scrollingBackground[0].layerSpeed * 3, 4f);
             scrollingBackground[1].LerpSpeed(scrollingBackground[1].layerSpeed * 3, 4f);
             scrollingBackground[2].LerpSpeed(scrollingBackground[2].layerSpeed * 3, 4f);
-            scrollingBackground[3].LerpSpeed(scrollingBackground[3].layerSpeed * 3, 4f);
-            scrollingBackground[4].LerpSpeed(scrollingBackground[4].layerSpeed * 3, 4f);
-            scrollingBackground[5].LerpSpeed(scrollingBackground[5].layerSpeed * 3, 4f);
+            //scrollingBackground[3].LerpSpeed(scrollingBackground[3].layerSpeed * 3, 4f);
+            //scrollingBackground[4].LerpSpeed(scrollingBackground[4].layerSpeed * 3, 4f);
+            //scrollingBackground[5].LerpSpeed(scrollingBackground[5].layerSpeed * 3, 4f);
             
-            scrollingBackground[1].LerpColor(Color.GreenYellow, 4f);
+            scrollingBackground[0].LerpColor(Color.GreenYellow, 4f);
 
             yield return 30f;
 
@@ -366,11 +366,11 @@ namespace AsteroidRebuttal.Levels
             scrollingBackground[0].LerpSpeed(scrollingBackground[0].layerSpeed / 3, 4f);
             scrollingBackground[1].LerpSpeed(scrollingBackground[1].layerSpeed / 3, 4f);
             scrollingBackground[2].LerpSpeed(scrollingBackground[2].layerSpeed / 3, 4f);
-            scrollingBackground[3].LerpSpeed(scrollingBackground[3].layerSpeed / 3, 4f);
-            scrollingBackground[4].LerpSpeed(scrollingBackground[4].layerSpeed / 3, 4f);
-            scrollingBackground[5].LerpSpeed(scrollingBackground[5].layerSpeed / 3, 4f);
+            //scrollingBackground[3].LerpSpeed(scrollingBackground[3].layerSpeed / 3, 4f);
+            //scrollingBackground[4].LerpSpeed(scrollingBackground[4].layerSpeed / 3, 4f);
+            //scrollingBackground[5].LerpSpeed(scrollingBackground[5].layerSpeed / 3, 4f);
 
-            scrollingBackground[1].LerpColor(Color.Red, 5.7f);
+            scrollingBackground[0].LerpColor(Color.Red, 5.7f);
 
             yield return 7f;
 

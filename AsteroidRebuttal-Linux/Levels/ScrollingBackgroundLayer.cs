@@ -36,14 +36,17 @@ namespace AsteroidRebuttal.Levels
         Color startColor;
         Color targetColor;
 
+		float XOffset = 0;
+
         #endregion
 
-        public ScrollingBackgroundLayer(GameScene newScene, Texture2D texture, float scrollSpeed, Color color)
+        public ScrollingBackgroundLayer(GameScene newScene, Texture2D texture, float scrollSpeed, Color color, float xoff = 0)
         {
             layerColor = color;
             layerSpeed = scrollSpeed;
             layerTexture = texture;
             thisScene = newScene;
+			XOffset = xoff;
 
             Initialize();
         }
@@ -54,24 +57,24 @@ namespace AsteroidRebuttal.Levels
 
             for (int i = 0; i < 2; i++)
             {
-                scrollingBackgroundImages[i] = new Vector2(0, thisScene.ScreenArea.Height - (layerTexture.Height * i));
+                scrollingBackgroundImages[i] = new Vector2(XOffset, thisScene.ScreenArea.Height - (layerTexture.Height * i));
             }
         }
 
 
         public void Update(GameTime gameTime)
         {
-            foreach (Vector2 sb in scrollingBackgroundImages)
+			for (int i = 0; i < scrollingBackgroundImages.Length; i++)
             {
-                sb.Y += (float)gameTime.ElapsedGameTime.TotalSeconds * layerSpeed;
+                scrollingBackgroundImages[i].Y += (float)gameTime.ElapsedGameTime.TotalSeconds * layerSpeed;
 
-                if (layerSpeed > 0 && sb.Y >= thisScene.ScreenArea.Height)
+                if (layerSpeed > 0 && scrollingBackgroundImages[i].Y >= thisScene.ScreenArea.Height)
                 {
-                    sb = new Vector2(sb.X, (sb.Y - layerTexture.Height * 2));
+                    scrollingBackgroundImages[i] = new Vector2(scrollingBackgroundImages[i].X, (scrollingBackgroundImages[i].Y - layerTexture.Height * 2));
                 }
-                else if (layerSpeed < 0 && sb.Y + layerTexture.Height <= 0)
+                else if (layerSpeed < 0 && scrollingBackgroundImages[i].Y + layerTexture.Height <= 0)
                 {
-                    sb = new Vector2(sb.X, (sb.Y + layerTexture.Height * 2));
+                    scrollingBackgroundImages[i] = new Vector2(scrollingBackgroundImages[i].X, (scrollingBackgroundImages[i].Y + layerTexture.Height * 2));
                 }
             }
 
@@ -123,7 +126,10 @@ namespace AsteroidRebuttal.Levels
         {
             foreach (Vector2 sb in scrollingBackgroundImages)
             {
-                spriteBatch.Draw(layerTexture, sb, null, layerColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, DrawLayer);
+				spriteBatch.Draw(layerTexture, sb, null, layerColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, DrawLayer);
+
+				//spriteBatch.Draw(GameObjects.PlayerShip.hitboxTexture, sb, null, layerColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, DrawLayer);
+				//spriteBatch.Draw(layerTexture, sb, null, layerColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, DrawLayer);
             }
         }
     }

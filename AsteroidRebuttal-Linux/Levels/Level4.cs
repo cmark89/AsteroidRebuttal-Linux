@@ -20,10 +20,24 @@ namespace AsteroidRebuttal.Levels
     {
         // Content
         public static Texture2D Level4GroundTexture;
-        public static Texture2D Level4Text1Texture;
-        public static Texture2D Level4Text2Texture;
-        public static Texture2D Level4Text3Texture;
-        public static Texture2D Level4Text4Texture;
+        public static Texture2D Level4Text1_1;
+		public static Texture2D Level4Text1_2;
+		public static Texture2D Level4Text1_3;
+		public static Texture2D Level4Text1_4;
+		public static Texture2D Level4Text1_5;
+		public static Texture2D Level4Text1_6;
+		public static Texture2D Level4Text2_1;
+		public static Texture2D Level4Text2_2;
+		public static Texture2D Level4Text2_3;
+		public static Texture2D Level4Text2_4;
+		public static Texture2D Level4Text2_5;
+		public static Texture2D Level4Text3_1;
+		public static Texture2D Level4Text3_2;
+		public static Texture2D Level4Text3_3;
+		public static Texture2D Level4Text4_1;
+		public static Texture2D Level4Text4_2;
+		public static Texture2D Level4Text4_3;
+
         public static Texture2D Level4Warning1Texture;
         public static Texture2D Level4Warning2Texture;
 
@@ -47,22 +61,59 @@ namespace AsteroidRebuttal.Levels
 
             // Individually add each layer to the scrolling background...
             scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level4GroundTexture, 30f, Color.White));
-            scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level4Text1Texture, 45f, Color.White));
-            scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level4Text2Texture, 65f, Color.White));
-            scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level4Text3Texture, 90f, Color.White));
-            scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level4Text4Texture, 120f, Color.White));
+
+			// Oh boy...
+            scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level4Text1_1, 45f, Color.White, 90));
+			scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level4Text1_1, 45f, Color.White, 265));
+			scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level4Text1_1, 45f, Color.White, 307));
+			scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level4Text1_1, 45f, Color.White, 383));
+			scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level4Text1_1, 45f, Color.White, 555));
+			scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level4Text1_1, 45f, Color.White, 569));
+
+			scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level4Text2_1, 65f, Color.White, 17));
+			scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level4Text2_2, 65f, Color.White, 74));
+			scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level4Text2_3, 65f, Color.White, 137));
+			scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level4Text2_4, 65f, Color.White, 361));
+			scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level4Text2_5, 65f, Color.White, 614));
+
+			scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level4Text3_1, 90f, Color.White, 238));
+			scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level4Text3_2, 90f, Color.White, 489));
+			scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level4Text3_3, 90f, Color.White, 670));
+
+			scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level4Text4_1, 90f, Color.White, 164));
+			scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level4Text4_2, 90f, Color.White, 410));
+			scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level4Text4_3, 90f, Color.White, 714));
 
             // Add the warning layers but hide them until needed.
-            scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level4Warning1Texture, -160f, Color.Transparent));
-            scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level4Warning2Texture, -45f, Color.Transparent));
+            scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level4Warning1Texture, -160f, Color.Transparent, 67));
+            scrollingBackground.Add(new ScrollingBackgroundLayer(manager.thisScene, Level4Warning2Texture, -45f, Color.Transparent, 502));
 
-            scrollingBackground[0].DrawLayer = .99f;
-            scrollingBackground[1].DrawLayer = .98f;
-            scrollingBackground[2].DrawLayer = .97f;
-            scrollingBackground[3].DrawLayer = .96f;
-            scrollingBackground[4].DrawLayer = .95f;
-            scrollingBackground[5].DrawLayer = .94f;
-            scrollingBackground[6].DrawLayer = .93f;
+            scrollingBackground[0].DrawLayer = .99f;	//Base BG
+
+            scrollingBackground[1].DrawLayer = .98f;	// Text layer 1
+            scrollingBackground[2].DrawLayer = .98f;
+            scrollingBackground[3].DrawLayer = .98f;
+            scrollingBackground[4].DrawLayer = .98f;
+            scrollingBackground[5].DrawLayer = .98f;
+            scrollingBackground[6].DrawLayer = .98f;
+
+			scrollingBackground[7].DrawLayer = .97f;	// Text layer 2
+			scrollingBackground[8].DrawLayer = .97f;
+			scrollingBackground[9].DrawLayer = .97f;
+			scrollingBackground[10].DrawLayer = .97f;
+			scrollingBackground[11].DrawLayer = .97f;
+
+			scrollingBackground[12].DrawLayer = .96f;	// Text layer 3
+			scrollingBackground[13].DrawLayer = .96f;
+			scrollingBackground[14].DrawLayer = .96f;
+
+			scrollingBackground[15].DrawLayer = .95f;	// Text layer 4
+			scrollingBackground[16].DrawLayer = .95f;
+			scrollingBackground[17].DrawLayer = .95f;
+
+			scrollingBackground[18].DrawLayer = .94f;	// Warnings
+			scrollingBackground[19].DrawLayer = .94f;
+
         }
 
         public override IEnumerator<float> LevelScript()
@@ -170,27 +221,7 @@ namespace AsteroidRebuttal.Levels
             scriptManager.Execute(KomodoStrafeBlue, e);
             yield return 4f;
 
-            // Turtles, round 2.
-            e = SpawnEnemy(EnemyType.Tortoise, new Vector2(350, -35f));
-            e.Rotation = (float)Math.PI / 2f;
-            e.CustomValue1 = .4f;
-            e.CustomValue2 = (float)Math.PI / 2f;
-            e.Velocity = 40f;
-            scriptManager.Execute(TurtleBarrage, e);
-
-            e = SpawnEnemy(EnemyType.Tortoise, new Vector2(150, -65f));
-            e.Rotation = (float)Math.PI / 2f;
-            e.CustomValue1 = .6f;
-            e.CustomValue2 = (float)(Math.PI / 4f) * 1;
-            e.Velocity = 40f;
-            scriptManager.Execute(TurtleBarrage, e);
-
-            e = SpawnEnemy(EnemyType.Tortoise, new Vector2(550, -65f));
-            e.Rotation = (float)Math.PI / 2f;
-            e.CustomValue1 = .6f;
-            e.CustomValue2 = (float)(Math.PI / 4f) * 3;
-            e.Velocity = 40f;
-            scriptManager.Execute(TurtleBarrage, e);
+			// Turtles removed
 
             yield return 4f;
 
@@ -216,14 +247,44 @@ namespace AsteroidRebuttal.Levels
 
             // Lerp the background to INFECTION COLORS!
             scrollingBackground[0].LerpColor(Color.Lerp(Color.Yellow, Color.White, .5f), 6f);
+
             scrollingBackground[1].LerpColor(Color.DarkRed, 6f);
             scrollingBackground[1].LerpSpeed(150f, 6f);
-            scrollingBackground[2].LerpColor(Color.DarkRed, 6f);
-            scrollingBackground[2].LerpSpeed(200f, 6f);
-            scrollingBackground[3].LerpColor(Color.DarkRed, 6f);
-            scrollingBackground[3].LerpSpeed(250f, 6f);
-            scrollingBackground[4].LerpColor(Color.DarkRed, 6f);
-            scrollingBackground[4].LerpSpeed(300f, 6f);
+			scrollingBackground[2].LerpColor(Color.DarkRed, 6f);
+            scrollingBackground[2].LerpSpeed(150f, 6f);
+			scrollingBackground[3].LerpColor(Color.DarkRed, 6f);
+            scrollingBackground[3].LerpSpeed(150f, 6f);
+			scrollingBackground[4].LerpColor(Color.DarkRed, 6f);
+            scrollingBackground[4].LerpSpeed(150f, 6f);
+			scrollingBackground[5].LerpColor(Color.DarkRed, 6f);
+            scrollingBackground[5].LerpSpeed(150f, 6f);
+			scrollingBackground[6].LerpColor(Color.DarkRed, 6f);
+            scrollingBackground[6].LerpSpeed(150f, 6f);
+
+            scrollingBackground[7].LerpColor(Color.DarkRed, 6f);
+            scrollingBackground[7].LerpSpeed(200f, 6f);
+			scrollingBackground[8].LerpColor(Color.DarkRed, 6f);
+            scrollingBackground[8].LerpSpeed(200f, 6f);
+			scrollingBackground[9].LerpColor(Color.DarkRed, 6f);
+            scrollingBackground[9].LerpSpeed(200f, 6f);
+			scrollingBackground[10].LerpColor(Color.DarkRed, 6f);
+            scrollingBackground[10].LerpSpeed(200f, 6f);
+			scrollingBackground[11].LerpColor(Color.DarkRed, 6f);
+            scrollingBackground[11].LerpSpeed(200f, 6f);
+
+            scrollingBackground[12].LerpColor(Color.DarkRed, 6f);
+            scrollingBackground[12].LerpSpeed(250f, 6f);
+			scrollingBackground[13].LerpColor(Color.DarkRed, 6f);
+            scrollingBackground[13].LerpSpeed(250f, 6f);
+			scrollingBackground[14].LerpColor(Color.DarkRed, 6f);
+            scrollingBackground[14].LerpSpeed(250f, 6f);
+
+            scrollingBackground[15].LerpColor(Color.DarkRed, 6f);
+            scrollingBackground[15].LerpSpeed(300f, 6f);
+			scrollingBackground[16].LerpColor(Color.DarkRed, 6f);
+            scrollingBackground[16].LerpSpeed(300f, 6f);
+			scrollingBackground[17].LerpColor(Color.DarkRed, 6f);
+            scrollingBackground[17].LerpSpeed(300f, 6f);
 
             manager.thisScene.PlayBossWarning();
             scriptManager.Execute(Warning1Flash);
@@ -269,8 +330,23 @@ namespace AsteroidRebuttal.Levels
             scrollingBackground[2].LerpColor(Color.White, 1f);
             scrollingBackground[3].LerpColor(Color.White, 1f);
             scrollingBackground[4].LerpColor(Color.White, 1f);
-            scrollingBackground[5].LerpColor(Color.Transparent, 1f);
-            scrollingBackground[6].LerpColor(Color.Transparent, 1f);
+			scrollingBackground[5].LerpColor(Color.White, 1f);
+			scrollingBackground[6].LerpColor(Color.White, 1f);
+			scrollingBackground[7].LerpColor(Color.White, 1f);
+			scrollingBackground[8].LerpColor(Color.White, 1f);
+			scrollingBackground[9].LerpColor(Color.White, 1f);
+			scrollingBackground[10].LerpColor(Color.White, 1f);
+			scrollingBackground[11].LerpColor(Color.White, 1f);
+			scrollingBackground[12].LerpColor(Color.White, 1f);
+			scrollingBackground[13].LerpColor(Color.White, 1f);
+			scrollingBackground[14].LerpColor(Color.White, 1f);
+			scrollingBackground[15].LerpColor(Color.White, 1f);
+			scrollingBackground[16].LerpColor(Color.White, 1f);
+			scrollingBackground[17].LerpColor(Color.White, 1f);
+
+
+            scrollingBackground[18].LerpColor(Color.Transparent, 1f);
+            scrollingBackground[19].LerpColor(Color.Transparent, 1f);
 
             yield return 1f;
 
@@ -345,9 +421,9 @@ namespace AsteroidRebuttal.Levels
             WarningFlashing = true;
             while (WarningFlashing)
             {
-                scrollingBackground[5].LerpColor(Color.Lerp(Color.Transparent, Color.White, .5f), 3f);
+                scrollingBackground[18].LerpColor(Color.Lerp(Color.Transparent, Color.White, .5f), 3f);
                 yield return 4f;
-                scrollingBackground[5].LerpColor(Color.Lerp(Color.Transparent, Color.White, .1f), 3f);
+                scrollingBackground[18].LerpColor(Color.Lerp(Color.Transparent, Color.White, .1f), 3f);
                 yield return 4f;
             }
         }
@@ -357,9 +433,9 @@ namespace AsteroidRebuttal.Levels
             WarningFlashing = true;
             while (WarningFlashing)
             {
-                scrollingBackground[6].LerpColor(Color.Lerp(Color.Transparent, Color.White, .4f), 2.1f);
+                scrollingBackground[19].LerpColor(Color.Lerp(Color.Transparent, Color.White, .4f), 2.1f);
                 yield return 2.7f;
-                scrollingBackground[6].LerpColor(Color.Lerp(Color.Transparent, Color.White, .08f), 2.1f);
+                scrollingBackground[19].LerpColor(Color.Lerp(Color.Transparent, Color.White, .08f), 2.1f);
                 yield return 2.7f;
             }
         }

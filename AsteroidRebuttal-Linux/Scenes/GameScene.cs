@@ -141,6 +141,11 @@ namespace AsteroidRebuttal.Scenes
             Game = thisGame;
         }
 
+		public Rectangle ScreenAreaIntersection (Rectangle rect)
+		{
+			return Rectangle.Intersect(ScreenArea, rect);
+		}
+
         public override void Initialize()
         {
             scriptManager = new ScriptManager();
@@ -183,12 +188,11 @@ namespace AsteroidRebuttal.Scenes
             levelManager = new LevelManager(this);
 
             // Test
-            levelManager.SetLevel(4);
+            levelManager.SetLevel(1);
 
             //new FinalBoss(this, new Vector2(350, -300));
             player = new PlayerShip(this, new Vector2(350, 550));
         }
-
 
         public override void LoadContent(ContentManager content)
         {
